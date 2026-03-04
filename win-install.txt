@@ -18,7 +18,44 @@ PS C:\WINDOWS\system32> dism.exe /online /enable-feature /featurename:VirtualMac
 기능을 사용하도록 설정하는 중
 [==========================100.0%==========================]
 작업을 완료했습니다.
-PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32>restart-computer
+
+PS C:\WINDOWS\system32> wsl --update
+업데이트 확인 중입니다.
+Linux용 Windows 하위 시스템 최신 버전이 이미 설치되어 있습니다.
+PS C:\WINDOWS\system32> wsl --set-default-version 2
+WSL 2와의 주요 차이점에 대한 자세한 내용은 https://aka.ms/wsl2를 참조하세요
+
+작업을 완료했습니다.
+PS C:\WINDOWS\system32> wsl --list --online
+다음은 설치할 수 있는 유효한 배포 목록입니다.
+'wsl.exe --install <Distro>'을 사용하여 설치합니다.
+
+NAME                            FRIENDLY NAME
+Ubuntu                          Ubuntu
+Ubuntu-24.04                    Ubuntu 24.04 LTS
+openSUSE-Tumbleweed             openSUSE Tumbleweed
+openSUSE-Leap-16.0              openSUSE Leap 16.0
+SUSE-Linux-Enterprise-15-SP7    SUSE Linux Enterprise 15 SP7
+SUSE-Linux-Enterprise-16.0      SUSE Linux Enterprise 16.0
+kali-linux                      Kali Linux Rolling
+Debian                          Debian GNU/Linux
+AlmaLinux-8                     AlmaLinux OS 8
+AlmaLinux-9                     AlmaLinux OS 9
+AlmaLinux-Kitten-10             AlmaLinux OS Kitten 10
+AlmaLinux-10                    AlmaLinux OS 10
+archlinux                       Arch Linux
+FedoraLinux-43                  Fedora Linux 43
+FedoraLinux-42                  Fedora Linux 42
+eLxr                            eLxr 12.12.0.0 GNU/Linux
+Ubuntu-20.04                    Ubuntu 20.04 LTS
+Ubuntu-22.04                    Ubuntu 22.04 LTS
+OracleLinux_7_9                 Oracle Linux 7.9
+OracleLinux_8_10                Oracle Linux 8.10
+OracleLinux_9_5                 Oracle Linux 9.5
+openSUSE-Leap-15.6              openSUSE Leap 15.6
+SUSE-Linux-Enterprise-15-SP6    SUSE Linux Enterprise 15 SP6
+PS C:\WINDOWS\system32> wsl --install Ubuntu-24.04
 
 
 제어판 > 프로그램 > 프로그램 및 기능 > Windows 기능 켜기/끄기
