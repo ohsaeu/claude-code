@@ -1,0 +1,21 @@
+PS C:\WINDOWS\system32> dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+배포 이미지 서비스 및 관리 도구
+버전: 10.0.19041.3636
+
+이미지 버전: 10.0.19045.6466
+
+기능을 사용하도록 설정하는 중
+[==========================100.0%==========================]
+작업을 완료했습니다.
+PS C:\WINDOWS\system32> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+배포 이미지 서비스 및 관리 도구
+버전: 10.0.19041.3636
+
+이미지 버전: 10.0.19045.6466
+
+기능을 사용하도록 설정하는 중
+[==========================100.0%==========================]
+작업을 완료했습니다.
+PS C:\WINDOWS\system32>
