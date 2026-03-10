@@ -13,12 +13,12 @@
 - 자주 사용하는 명령어
 - 팀 협업 규칙
 
-> 현재싱황: React + Typescript 프로젝트 // Context
+❯ 현재싱황: React + Typescript 프로젝트 // Context
 목표: 사용자 인증 시스템 구축
 제약사항: 무료 백엔드 서비스 사용(firebase auth)
 
 
-> 기능 요구사항:  // Specific Requirement
+❯ 기능 요구사항:  // Specific Requirement
 - 이메일 인증 기반 회원가입
 - 소셜 로그인 (Google, Github)
 - 비밀번호 재설정 기능
@@ -28,7 +28,7 @@
 - 반응형 디자인
 - 웹 접근성 고려
  
- > 결과물  // Expected output
+❯ 결과물  // Expected output
 - 완전한 코드 구현
 - 주요 부분에 대한 설명
 - 설치 필요한 패키지 목록
