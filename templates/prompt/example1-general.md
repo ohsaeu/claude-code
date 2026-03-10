@@ -13,9 +13,9 @@
 - 자주 사용하는 명령어
 - 팀 협업 규칙
 
-❯ 현재싱황: React + Typescript 프로젝트 // Context
-목표: 사용자 인증 시스템 구축
-제약사항: 무료 백엔드 서비스 사용(firebase auth)
+❯ 현재싱황: React + Typescript 프로젝트 // Context  
+목표: 사용자 인증 시스템 구축  
+제약사항: 무료 백엔드 서비스 사용(firebase auth)  
 
 
 ❯ 기능 요구사항:  // Specific Requirement
