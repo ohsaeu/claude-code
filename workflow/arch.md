@@ -8,3 +8,4 @@
 - Database: Postgresql + redis
 - DevOps: Docker + Kubernetes
 - CI/CD: Github Actions
+각 기술의 버전 호환성과 잠재적 이슈를 분석해줘
