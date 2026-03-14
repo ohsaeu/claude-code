@@ -6,5 +6,6 @@
 ## 위 WBS를 기반으로 Github Issues를 자동으로 생성할 수 있는 gh cli 명령어 스크립트를 작성해줘
 
 ```bash
+gh auth login
 ./create_issues.sh ohsaeu claude-code
 ```
