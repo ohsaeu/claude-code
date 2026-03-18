@@ -1,0 +1,65 @@
+# Multi-stage production Dockerfile
+# Stage 1: Build
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy source code
+COPY . .
+
+# Run tests and build (if applicable)
+RUN npm run test && npm run build
+
+# Stage 2: Production
+FROM node:18-alpine AS production
+
+# Install security updates
+RUN apk update && apk upgrade && apk add --no-cache \
+    tini \
+    curl \
+    bash
+
+WORKDIR /app
+
+# Copy package files and install production dependencies
+COPY package*.json ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy built application from builder stage
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/public ./public 2>/dev/null || true
+COPY --from=builder /app/dist ./dist 2>/dev/null || true
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001 -G nodejs
+
+# Create necessary directories
+RUN mkdir -p /app/logs /app/tmp && \
+    chown -R nodejs:nodejs /app
+
+# Switch to non-root user
+USER nodejs
+
+# Set environment
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:3000/health || exit 1
+
+# Use tini as entrypoint for proper signal handling
+ENTRYPOINT ["/sbin/tini", "--"]
+
+# Start application
+CMD ["node", "src/app.js"]

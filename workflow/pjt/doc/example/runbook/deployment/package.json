@@ -1,0 +1,76 @@
+{
+  "name": "runbook-api",
+  "version": "1.0.0",
+  "description": "Node.js API with comprehensive deployment setup",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "build": "npm run lint && npm test",
+    "pre-deploy": "npm run build && npm audit --audit-level high",
+    "deploy:dev": "./deployment/scripts/deploy.sh development",
+    "deploy:staging": "./deployment/scripts/deploy.sh staging",
+    "deploy:prod": "./deployment/scripts/deploy.sh production",
+    "rollback:dev": "./deployment/scripts/rollback.sh development",
+    "rollback:staging": "./deployment/scripts/rollback.sh staging",
+    "rollback:prod": "./deployment/scripts/rollback.sh production",
+    "health-check": "./deployment/scripts/health-check.sh",
+    "db:migrate": "./deployment/scripts/db-migrate.sh",
+    "db:seed": "./deployment/scripts/db-seed.sh",
+    "docker:build": "docker build -t runbook-api .",
+    "docker:build:dev": "docker build -f deployment/docker/Dockerfile.dev -t runbook-api:dev .",
+    "docker:build:prod": "docker build -f deployment/docker/Dockerfile.prod -t runbook-api:prod .",
+    "docker:run:dev": "docker run -p 3000:3000 --env-file deployment/config/.env.development runbook-api:dev",
+    "docker:run:staging": "docker run -p 3000:3000 --env-file deployment/config/.env.staging runbook-api:prod",
+    "docker:run:prod": "docker run -p 3000:3000 --env-file deployment/config/.env.production runbook-api:prod",
+    "k8s:deploy:dev": "kubectl apply -f deployment/k8s/dev/",
+    "k8s:deploy:staging": "kubectl apply -f deployment/k8s/staging/",
+    "k8s:deploy:prod": "kubectl apply -f deployment/k8s/prod/",
+    "backup:db": "./deployment/scripts/backup-db.sh",
+    "monitoring:setup": "./deployment/scripts/setup-monitoring.sh",
+    "logs:tail": "./deployment/scripts/tail-logs.sh",
+    "smoke-test": "./deployment/scripts/smoke-test.sh"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "dotenv": "^16.3.1",
+    "mongoose": "^7.5.0",
+    "redis": "^4.6.7",
+    "winston": "^3.10.0",
+    "joi": "^17.9.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3",
+    "eslint": "^8.47.0",
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/company/runbook-api.git"
+  },
+  "keywords": [
+    "api",
+    "nodejs",
+    "express",
+    "deployment",
+    "runbook"
+  ],
+  "author": "DevOps Team",
+  "license": "MIT"
+}
