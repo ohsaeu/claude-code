@@ -16,19 +16,19 @@
 
 
 ### 최적의 데이터베이스 설계를 찾아줘
-- 경로 1: NoSQL (MongDB)
+경로 1: NoSQL (MongDB)
  - 장점 분석
  - 단점 분석
  - 적합성 점수
-- 경로 2: SQL (PostgreSQL)
+ 경로 2: SQL (PostgreSQL)
  - 장점 분석
  - 단점 분석
  - 적합성 점수
-- 경로 3: 하이브리드
+ 경로 3: 하이브리드
  - 구현 복잡도
  - 성능 이득
  - 유지보수성
-- 모든 경로를 평가한 후 최종 추천
+ 모든 경로를 평가한 후 최종 추천
 
 
 ### API 엔드포인트를 구현하고 반복 개선해줘
@@ -52,21 +52,23 @@
 
 
 ###  예외 처리
+```bash
 echo "node_modules/" >> .claudeignore
 echo "*.log" >> .claudeignore
 echo "dist/" >> .claudeignore
+```
 
 ### 이 작업엔 memory/10-architecture.md와 memory/30-standards.md를 참고해
 
 #### 메모리 파일 분리 전략
-.claude/
-  memory/
-    00-brief.md		# 프로젝트 개요, 목표
-    10-architecture.md	# 아키텍쳐 결정 (ADR)
-    20-glossary.yaml		# 용어집
-    30-standards.md		# 코딩 규칙, 리뷰 체크리스트
-    40-runtime.md		# 성능/리소스 제약
-    90-known-issues.md	# 반복되는 문제 & 우회책
+.claude/  
+  memory/  
+    00-brief.md		# 프로젝트 개요, 목표  
+    10-architecture.md	# 아키텍쳐 결정 (ADR)  
+    20-glossary.yaml		# 용어집  
+    30-standards.md		# 코딩 규칙, 리뷰 체크리스트  
+    40-runtime.md		# 성능/리소스 제약  
+    90-known-issues.md	# 반복되는 문제 & 우회책  
 
 #### cat CLAUDE.md
 이 프로젝트에서 참조할 메모리 파일 목록:
