@@ -1,0 +1,90 @@
+# 용어집 (Glossary)
+
+# 도메인 특화 용어
+terms:
+  task:
+    definition: "사용자가 완료해야 할 작업 항목"
+    aliases: ["할 일", "작업", "항목"]
+    properties:
+      - "고유 ID 보유"
+      - "완료 상태 추적 가능"
+      - "생성/수정 시간 기록"
+    
+  memory_system:
+    definition: "프로젝트 정보를 구조적으로 관리하는 시스템"
+    components:
+      - "00-brief.md: 프로젝트 개요"
+      - "10-architecture.md: 기술 결정"
+      - "20-glossary.yaml: 용어 정의"
+      - "30-standards.md: 코딩 규칙"
+      - "40-runtime.md: 운영 정보"
+      - "90-known-issues.md: 문제 해결"
+
+  real_time_update:
+    definition: "WebSocket을 통한 즉시 데이터 동기화"
+    mechanism: "Socket.io를 통한 이벤트 기반 통신"
+    events:
+      - "task:created"
+      - "task:updated"  
+      - "task:deleted"
+
+# 기술 용어
+technical:
+  adr:
+    full_name: "Architecture Decision Record"
+    definition: "아키텍처 결정에 대한 문서화된 기록"
+    purpose: "기술적 결정의 맥락과 근거 보존"
+    
+  crud:
+    full_name: "Create, Read, Update, Delete"
+    definition: "기본적인 데이터 조작 연산"
+    mapping:
+      create: "POST /api/tasks"
+      read: "GET /api/tasks"
+      update: "PUT /api/tasks/:id"
+      delete: "DELETE /api/tasks/:id"
+
+  socket_io:
+    definition: "실시간 양방향 통신을 위한 JavaScript 라이브러리"
+    features:
+      - "자동 폴백 메커니즘"
+      - "브라우저 호환성"
+      - "이벤트 기반 통신"
+      - "Room/Namespace 지원"
+
+# 상태 값
+statuses:
+  task_completion:
+    completed: "작업이 완료된 상태"
+    pending: "작업이 아직 진행 중인 상태"
+    
+  server_response:
+    success: "요청이 성공적으로 처리됨"
+    error: "요청 처리 중 오류 발생"
+    not_found: "요청한 리소스를 찾을 수 없음"
+
+# 네이밍 컨벤션
+naming_conventions:
+  files:
+    pattern: "kebab-case"
+    examples: ["task-service.ts", "socket-handler.ts"]
+    
+  variables:
+    pattern: "camelCase"
+    examples: ["taskId", "isCompleted", "createdAt"]
+    
+  interfaces:
+    pattern: "PascalCase"
+    examples: ["Task", "TaskStore", "ApiResponse"]
+    
+  constants:
+    pattern: "UPPER_SNAKE_CASE"
+    examples: ["MAX_TASKS", "DEFAULT_PORT", "API_PREFIX"]
+
+# HTTP 상태 코드
+http_codes:
+  200: "OK - 요청 성공"
+  201: "Created - 리소스 생성 성공"
+  400: "Bad Request - 잘못된 요청"
+  404: "Not Found - 리소스 없음"
+  500: "Internal Server Error - 서버 내부 오류"
